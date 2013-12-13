@@ -49,9 +49,9 @@ module Geokit
 
           begin
             units_sphere_multiplier(units) *
-                Math.acos( Math.sin(deg2rad(from.lat)) * Math.sin(deg2rad(to.lat)) +
+                Math.acos([-1,[1,Math.sin(deg2rad(from.lat)) * Math.sin(deg2rad(to.lat)) +
                 Math.cos(deg2rad(from.lat)) * Math.cos(deg2rad(to.lat)) *
-                Math.cos(deg2rad(to.lng) - deg2rad(from.lng)))
+                Math.cos(deg2rad(to.lng) - deg2rad(from.lng))].min].max)
           rescue *error_classes
             0.0
           end
